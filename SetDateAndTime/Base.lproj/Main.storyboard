@@ -1,24 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SetDateAndTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inq-FS-6Az">
+                                <rect key="frame" x="45" y="379" width="317" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsa-5n-eEc">
+                                <rect key="frame" x="112" y="323" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3C-ou-PXT">
+                                <rect key="frame" x="162" y="474" width="83" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change"/>
+                                <connections>
+                                    <action selector="changeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ecY-eV-pX6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VGC-Ie-DU6"/>
+                    <connections>
+                        <outlet property="button" destination="a3C-ou-PXT" id="eQY-wz-YBC"/>
+                        <outlet property="showLabel" destination="inq-FS-6Az" id="U46-xC-ab2"/>
+                        <segue destination="yjq-Df-B6Z" kind="presentation" identifier="toSecondVC" modalPresentationStyle="fullScreen" id="3xa-hZ-klt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1041.5384615384614" y="-27.72511848341232"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="hYK-Uz-oVf">
+            <objects>
+                <viewController id="yjq-Df-B6Z" customClass="SecondViewController" customModule="SetDateAndTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KH6-Wd-K2R">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-a4-3Pf">
+                                <rect key="frame" x="24" y="277" width="342" height="195"/>
+                                <connections>
+                                    <action selector="dateSelectedFromDatePicker:" destination="yjq-Df-B6Z" eventType="valueChanged" id="qVZ-YD-iaI"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiN-7j-uqU">
+                                <rect key="frame" x="24" y="238" width="287" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-QJ-6UK">
+                                <rect key="frame" x="301" y="83" width="65" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="yjq-Df-B6Z" eventType="touchUpInside" id="zDh-1b-R6Y"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="toFirstVC" modalPresentationStyle="fullScreen" id="g12-qX-21u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHv-vG-pPK">
+                                <rect key="frame" x="24" y="81" width="62" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="WoE-8Y-2F1"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="DYv-BQ-sKf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sJO-qI-ZCq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fHv-vG-pPK" firstAttribute="top" secondItem="sJO-qI-ZCq" secondAttribute="top" constant="34" id="1Bf-qU-fMT"/>
+                            <constraint firstItem="fHv-vG-pPK" firstAttribute="leading" secondItem="sJO-qI-ZCq" secondAttribute="leading" constant="24" id="1pT-A8-uvB"/>
+                            <constraint firstItem="fHv-vG-pPK" firstAttribute="centerY" secondItem="qc4-QJ-6UK" secondAttribute="centerY" id="Gx0-OB-VQv"/>
+                            <constraint firstItem="ta9-a4-3Pf" firstAttribute="top" secondItem="BiN-7j-uqU" secondAttribute="bottom" constant="18" id="J22-Lf-AGI"/>
+                            <constraint firstItem="sJO-qI-ZCq" firstAttribute="bottom" secondItem="ta9-a4-3Pf" secondAttribute="bottom" constant="186" id="NFs-ov-Svm"/>
+                            <constraint firstItem="sJO-qI-ZCq" firstAttribute="trailing" secondItem="qc4-QJ-6UK" secondAttribute="trailing" constant="24" id="VY0-dm-7XV"/>
+                            <constraint firstItem="sJO-qI-ZCq" firstAttribute="trailing" secondItem="BiN-7j-uqU" secondAttribute="trailing" constant="79" id="W0w-GK-2Ha"/>
+                            <constraint firstItem="fHv-vG-pPK" firstAttribute="leading" secondItem="BiN-7j-uqU" secondAttribute="leading" id="ciX-1g-Lv1"/>
+                            <constraint firstItem="qc4-QJ-6UK" firstAttribute="top" secondItem="sJO-qI-ZCq" secondAttribute="top" constant="36" id="lwl-Kl-0LB"/>
+                            <constraint firstItem="BiN-7j-uqU" firstAttribute="leading" secondItem="ta9-a4-3Pf" secondAttribute="leading" id="qdb-lS-oYV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lDz-Ms-BW5"/>
+                    <connections>
+                        <outlet property="datePicker" destination="ta9-a4-3Pf" id="HME-zh-jwd"/>
+                        <outlet property="todayLabel" destination="BiN-7j-uqU" id="3N7-yS-We5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5A-3U-L6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873.8461538461538" y="-28.436018957345969"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="g12-qX-21u"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
